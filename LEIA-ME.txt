@@ -1,0 +1,20 @@
+LOI METIN MOBILE - PROTOTIPO INICIAL
+
+Este pacote contém um protótipo simples feito para Godot 4:
+- mapa de treino 3D;
+- personagem azul controlado por WASD ou setas;
+- tecla ESPAÇO para uma ação de ataque de treino;
+- um boneco/monstro de treino.
+
+IMPORTANTE:
+Isto ainda NÃO é um MMORPG completo. Não inclui multiplayer, contas, servidor,
+salvamento online, progressão, inventário ou combate completo.
+
+COMPILAÇÃO:
+1. Crie um repositório no GitHub.
+2. Envie todos os arquivos e pastas deste ZIP para a raiz do repositório.
+3. Inclua também a pasta oculta .github/workflows.
+4. Abra a aba Actions no GitHub e execute o workflow "Build LOI METIN MOBILE for Windows".
+5. Baixe o artefato LOI-METIN-WINDOWS quando a execução terminar com sucesso.
+
+A compilação ainda precisa ser executada e validada.
