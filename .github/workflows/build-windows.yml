@@ -9,16 +9,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Baixar projeto
         uses: actions/checkout@v4
 
-      - name: Instalar Godot com templates
+      - name: Instalar Godot
         uses: chickensoft-games/setup-godot@v2
         with:
           version: 4.5.1
           use-dotnet: false
-          include-templates: true
+
+      - name: Baixar templates oficiais Windows
+        run: |
+          mkdir -p "$HOME/.local/share/godot/export_templates/4.5.1.stable"
+          curl -fL \
+            "https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_export_templates.tpz" \
+            -o /tmp/godot_templates.tpz
+          mkdir -p /tmp/godot_templates
+          unzip -q /tmp/godot_templates.tpz -d /tmp/godot_templates
+          cp -a /tmp/godot_templates/templates/. \
+            "$HOME/.local/share/godot/export_templates/4.5.1.stable/"
+          test -f "$HOME/.local/share/godot/export_templates/4.5.1.stable/windows_debug_x86_64.exe"
+          test -f "$HOME/.local/share/godot/export_templates/4.5.1.stable/windows_release_x86_64.exe"
 
       - name: Verificar projeto
         run: godot --headless --path . --editor --quit
