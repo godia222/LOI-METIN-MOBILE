@@ -13,14 +13,18 @@ jobs:
       - name: Baixar projeto
         uses: actions/checkout@v4
 
-      - name: Instalar Godot
+      - name: Instalar Godot com templates
         uses: chickensoft-games/setup-godot@v2
         with:
           version: 4.5.1
           use-dotnet: false
+          include-templates: true
 
       - name: Verificar projeto
         run: godot --headless --path . --editor --quit
+
+      - name: Criar pasta de build
+        run: mkdir -p build
 
       - name: Compilar Windows
         run: godot --headless --path . --export-release "Windows Desktop" build/LOI_METIN.exe
@@ -30,3 +34,4 @@ jobs:
         with:
           name: LOI-METIN-WINDOWS
           path: build/
+          if-no-files-found: error
